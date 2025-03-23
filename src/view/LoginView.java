@@ -1,6 +1,5 @@
 package view;
 
-<<<<<<< HEAD
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
@@ -187,29 +186,5 @@ public class LoginView extends JFrame {
         }
     }
 
-
-=======
-import java.util.Scanner;
-
-public class LoginView {
-	
-    private Scanner scanner;
-
-    public LoginView() {
-    	System.out.println("Bienvenutu");
-    	System.out.println("vous pouvez se connectez à votre compte ");
-        scanner = new Scanner(System.in);
-    }
-
-    public String getInput(String prompt) {
-        System.out.print(prompt);
-        return scanner.nextLine();
-    }
-
-    public void afficherMessage(String message) {
-        System.out.println(message);
-    }
-
->>>>>>> 1264f539e04be219c41c47d6e04ef9954577c518
 
 }

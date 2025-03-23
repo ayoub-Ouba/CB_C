@@ -1,70 +1,47 @@
 package controller;
 
-
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 1264f539e04be219c41c47d6e04ef9954577c518
 import basedonne.Client_bd;
 import model.Client;
 import view.ClientView;
+
 public class ClientControleer {
-	   private Client_bd client_bd;
-	    private ClientView view;
+    private Client_bd client_bd;
+    private ClientView view;
 
-	    public ClientControleer(ClientView view) {
-	        this.client_bd = new Client_bd(); 
-<<<<<<< HEAD
-=======
-=======
-import basedonne.ClientBd;
-import model.Client;
-import view.ClientView;
-public class ClientControleer {
-	   private ClientBd client_bd;
-	    private ClientView view;
+    public ClientControleer(ClientView view) {
+        this.client_bd = new Client_bd();
+        this.view = view;
+    }
 
-	    public ClientControleer(ClientView view) {
-	        this.client_bd = new ClientBd(); 
->>>>>>> b68b217 (Version Dashboard)
->>>>>>> 1264f539e04be219c41c47d6e04ef9954577c518
-	        this.view = view;
-	    }
+    public Client ajouterClient() {
+        String prenom = view.getInput("Entrez le prénom du client : ");
+        String nom = view.getInput("Entrez le nom du client : ");
+        String tele = view.getInput("Entrez le numéro de téléphone du client : ");
+        String email = view.getInput("Entrez l'email du client : ");
 
-	    public Client ajouter_client() {
-	        String prenom = view.getInput("Entrez le prenom de client :");
-	        String nom = view.getInput("Entrez le nom de client :");
-	        String tele = view.getInput("Entrez le numero de telephone du client :");
-	        String email = view.getInput("Entrez l'email de client :");
-	        int id_client=client_bd.ajouter_client(nom,prenom,tele,email);
-	        if(id_client!=0) {
-	        	view.afficherMessage("le client est bien ajouté");
-	        	return new Client(id_client,nom,prenom,tele,email);
-		                   
-	        	
-	        	
-	        }else {
-	        	view.afficherMessage("il y a un probleme le client n'est pas ajouter");
-	        	
-	        }
-	        return null;
-	        
-	    }
-	    
-	    public Client find_client() {
-	        String prenom = view.getInput("Entrez le prenom de client chercher :");
-	        String nom = view.getInput("Entrez le nom de client chercher :");
-	        
+        int id_client = client_bd.ajouter_client(nom, prenom, tele, email);
 
-	        if(client_bd.find_client(nom,prenom)!=null) {
-	        	
-	        	view.afficherMessage("le client est ce trouve");
-	        	return client_bd.find_client(nom,prenom);
-	        	
-	        }else {
-	        	view.afficherMessage("Il y a pas client avec ce nom et prenom ");
-	        }
-	        return null;
-	        
-	    }
+        if (id_client != 0) {
+            view.afficherMessage("Le client a bien été ajouté.");
+            return new Client(id_client, nom, prenom, tele, email);
+        } else {
+            view.afficherMessage("Un problème est survenu, le client n'a pas été ajouté.");
+            return null;
+        }
+    }
+
+    public Client trouverClient() {
+        String prenom = view.getInput("Entrez le prénom du client recherché : ");
+        String nom = view.getInput("Entrez le nom du client recherché : ");
+
+        Client client = client_bd.find_client(nom, prenom);
+
+        if (client != null) {
+            view.afficherMessage("Le client a été trouvé.");
+            return client;
+        } else {
+            view.afficherMessage("Aucun client trouvé avec ce nom et prénom.");
+            return null;
+        }
+    }
 }
