@@ -19,7 +19,7 @@ public class Main {
         LoginController controller = new LoginController(view);
         Utilisateur user_connecter = controller.login();
         
-        if (user_connecter != null) {
+        if (user_connecter != null) {//connexion  réussi
             ClientView view_client = new ClientView();
             ClientControleer controller_client = new ClientControleer(view_client);
             
